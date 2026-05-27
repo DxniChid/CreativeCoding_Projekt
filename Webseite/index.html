@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="style.css">
+<title>CC - Home</title>
+</head>
+<body>
+
+<div class="container" id="container">
+
+  <div class="page">
+
+    <div class="stars"></div>
+    <div class="rocket">🚀</div>
+
+    <h1>Creative Coding</h1>
+    <div class="subtitle">space-themed sketches</div>
+
+    <div class="menu">
+      <a class="button" href="../Sketches/sketch1.html">Interactivity</a>
+      <a class="button" href="../Sketches/sketch2.html">Procedural Motion</a>
+      <a class="button" href="../Sketches/sketch3.html">Perlin Noise </a>
+      <a class="button" href="../Sketches/sketch4.html">Moon Shader</a>
+    </div>
+
+    <h4 class="subtitle">By Danai Chidiroglou</h4>
+
+  </div>
+
+  <div class="page animals">
+
+    <h1>Creative Coding</h1>
+    <div class="subtitle">flower-themed sketches</div>
+
+    <div class="menu">
+      <a class="button" href="../Sketches/sketch5.html">Flower Field</a>
+      <a class="button" href="../Sketches/sketch6.html">Julia Set</a>
+      <a class="button" href="../Sketches/sketch7.html">Infinite growing flowers</a>
+      <a class="button" href="#">Flower Warp</a>
+    </div>
+
+    <h4 class="subtitle">By Danai Chidiroglou</h4>
+
+  </div>
+
+</div>
+
+<script>
+const container = document.getElementById("container");
+
+let startX = 0;
+let currentPage = 0;
+
+// Touch
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  handleSwipe(e.changedTouches[0].clientX);
+});
+
+// Mouse
+document.addEventListener("mousedown", e => {
+  startX = e.clientX;
+});
+
+document.addEventListener("mouseup", e => {
+  handleSwipe(e.clientX);
+});
+
+function handleSwipe(endX) {
+  let diff = endX - startX;
+
+  if (diff < -50) {
+    currentPage = 1;
+  }
+
+  if (diff > 50) {
+    currentPage = 0;
+  }
+
+  container.style.transform =
+    `translateX(-${currentPage * 100}vw)`;
+}
+</script>
+
+
+
+</body>
+</html>

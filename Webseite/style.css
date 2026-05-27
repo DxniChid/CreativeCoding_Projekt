@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+/* LIGHT GLOW */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center,
+    rgba(255,255,255,0.08),
+    transparent 60%);
+  pointer-events: none;
+}
+
+/* SWIPE CONTAINER */
+.container {
+  display: flex;
+  width: 200vw;
+  height: 100vh;
+  transition: transform 0.5s ease;
+}
+
+/* EACH PAGE */
+.page {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+/* SPACE BACKGROUND */
+.stars {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #111 0%, #000 70%);
+  z-index: -2;
+}
+
+/* ROCKET */
+.rocket {
+  position: fixed;
+  top: 60%;
+  left: -200px;
+  font-size: 40px;
+  transform: rotate(45deg);
+  animation: fly 6s linear infinite;
+  z-index: -1;
+}
+
+/* ROCKET ANIMATION */
+@keyframes fly {
+  0% {
+    transform: translateX(-200px)
+               translateY(0)
+               rotate(45deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(120vw)
+               translateY(-40vh)
+               rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* TITLES */
+h1 {
+  letter-spacing: 8px;
+  margin-bottom: 40px;
+}
+
+h4 {
+  margin-top: 60px;
+  font-weight: lighter;
+}
+
+.subtitle {
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* BUTTONS */
+a.button {
+  text-decoration: none;
+  color: white;
+  padding: 14px 24px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+  min-width: 200px;
+  backdrop-filter: blur(5px);
+}
+
+a.button:hover {
+  border-color: rgba(255,255,255,0.6);
+  transform: scale(1.05);
+}
+
+/* ANIMAL PAGE */
+.animals {
+  background: linear-gradient(
+    to bottom,
+    #163d1d,
+    #0b1f10
+  );
+}
+
+/* ANIMAL ICON */
+.animals .rocket {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  animation: none;
+  font-size: 60px;
+}

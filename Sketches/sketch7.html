@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bloom Field</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background-color: black;
+}
+
+#field {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.flower {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.stem {
+  width: 3px;
+  background: linear-gradient(#0fffc1, #0b3d2e);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  animation: grow 2s ease-out forwards;
+}
+
+.bloom {
+  position: absolute;
+  left: 50%;
+  bottom: var(--h);
+  transform: translateX(-50%) scale(0);
+  animation: bloom 2.5s ease forwards;
+}
+
+@keyframes grow {
+  from { height: 0; }
+  to { height: var(--h); }
+}
+
+@keyframes bloom {
+  to { transform: translateX(-50%) scale(1); }
+}
+
+.petal {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  border-radius: 60%;
+  filter: drop-shadow(0 0 10px var(--c));
+  background: radial-gradient(circle at 30% 30%, var(--c), transparent);
+}
+
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  animation: floatUp 3s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-200px); opacity: 0; }
+}
+</style>
+
+<!-- WICHTIG: nur diese eine Datei -->
+<script defer src="sketch7.js"></script>
+
+</head>
+
+<body>
+<div id="field"></div>
+</body>
+</html>
